@@ -63,6 +63,7 @@ public class KVServiceImpl implements KVService {
         if (id == null) {
             throw new IllegalArgumentException("Missing query parameter 'id'");
         }
+        onEntityRequestReceived(exchange, id);
 
         switch (exchange.getRequestMethod()) {
             case "GET" -> entityRequestProcessor.handleGet(exchange, id, queryParams);
@@ -70,6 +71,10 @@ public class KVServiceImpl implements KVService {
             case "DELETE" -> entityRequestProcessor.handleDelete(exchange, id, queryParams);
             case null, default -> exchange.sendResponseHeaders(HttpCodes.METHOD_NOT_ALLOWED, NO_BODY_RESPONSE_LENGTH);
         }
+    }
+
+    protected void onEntityRequestReceived(HttpExchange exchange, String id) {
+        // for extending
     }
 
     @Override
