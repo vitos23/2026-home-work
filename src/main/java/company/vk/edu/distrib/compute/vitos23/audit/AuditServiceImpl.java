@@ -23,7 +23,7 @@ import java.util.Map;
 import static company.vk.edu.distrib.compute.vitos23.audit.AuditParameters.AUDIT_TOPIC_NAME;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-@SuppressWarnings("PMD.AvoidSynchronizedAtMethodLevel")
+@SuppressWarnings("PMD.AvoidSynchronizedAtMethodLevel") // For Codacy
 public class AuditServiceImpl implements AuditService {
 
     private static final Logger log = LoggerFactory.getLogger(AuditServiceImpl.class);
