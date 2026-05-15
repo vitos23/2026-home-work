@@ -23,6 +23,7 @@ import java.util.Map;
 import static company.vk.edu.distrib.compute.vitos23.audit.AuditParameters.AUDIT_TOPIC_NAME;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+@SuppressWarnings("PMD.AvoidSynchronizedAtMethodLevel")
 public class AuditServiceImpl implements AuditService {
 
     private static final Logger log = LoggerFactory.getLogger(AuditServiceImpl.class);
@@ -99,6 +100,7 @@ public class AuditServiceImpl implements AuditService {
     }
 
     @Override
+    @SuppressWarnings("PMD.NullAssignment") // For Codacy
     public synchronized void stop() {
         if (listenerThread == null || !listenerThread.isAlive()) {
             closeResources();
@@ -124,6 +126,7 @@ public class AuditServiceImpl implements AuditService {
         }
     }
 
+    @SuppressWarnings("PMD.NullAssignment") // For Codacy
     private void closeWriter() {
         if (storageWriter == null) {
             return;
